@@ -22,6 +22,45 @@
     }
   };
 
+  root.$l.extend = function() {
+    var objs = [].slice.call(arguments);
+    var blankObj = {};
+    for (var i = 0; i < objs.length; i++) {
+      for (var attrname in objs[i]) { blankObj[attrname] = objs[i][attrname]; }
+    }
+    return blankObj;
+  };
+
+  // root.$l.ajax = function (request) {
+  //   var defaults = {
+  //     success:
+  //     error:
+  //     url:
+  //     method:
+  //     data:
+  //     contentType:
+  //   }
+  //
+  //   var xmlhttp = new XMLHttpRequest();
+  //
+  //   xmlhttp.onreadystatechange = function() {
+  //       if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
+  //          if(xmlhttp.status === 200){
+  //             console.log("status 200");
+  //          }
+  //          else if(xmlhttp.status === 400) {
+  //             alert('There was an error 400');
+  //          }
+  //          else {
+  //             alert('something else other than 200 was returned');
+  //          }
+  //       }
+  //   };
+  //
+  //   xmlhttp.open(request[type], request[url], true);
+  //   xmlhttp.send();
+  // };
+
   DOMNodeCollection.prototype.html = function (str) {
     if (typeof str === "undefined") {
       return this.htmlements[0].innerHTML;
