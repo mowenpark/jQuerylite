@@ -9,7 +9,9 @@
   };
 
   root.$l = function (arg) {
-    if (arg instanceof HTMLElement) {
+    if (arg instanceof Function) {
+      document.addEventListener("DOMContentLoaded", arg );
+    } else if (arg instanceof HTMLElement) {
       var elementList = document.getElementsByTagName(arg);
       var elementArray = [].slice.call(elementList);
       return new DOMNodeCollection(elementArray);
@@ -98,18 +100,18 @@
 
   DOMNodeCollection.prototype.on = function (type, listener) {
     for(var i = 0; i < this.htmlements.length; i++) {
-      debugger
       this.htmlements[i].addEventListener(type, listener);
-      debugger
     }
   };
 
   DOMNodeCollection.prototype.off = function (type, listener) {
     for(var i = 0; i < this.htmlements.length; i++) {
-      debugger
       this.htmlements[i].removeEventListener(type, listener);
-      debugger
     }
+  };
+
+  DOMNodeCollection.prototype.methodName = function () {
+
   };
 
 })();
